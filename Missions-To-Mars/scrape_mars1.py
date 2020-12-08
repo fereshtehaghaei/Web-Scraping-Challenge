@@ -88,6 +88,14 @@ def scrape():
     # Scrape HTML & Finding Everything inside ul
     nasa_results = nasa_soup.find('ul', class_='item_list')
 
+    #nasa_results
+
+
+    # #### Scrape and collect the latest News "TITLE"
+
+    # In[244]:
+
+
     # Retrieve the latest element that contains news title
     news_title = nasa_results.find("div", class_ = "content_title").text
 
@@ -103,11 +111,11 @@ def scrape():
 
 
     # Retrieve the latest element that contains news paragraph
-    news_paragraph = nasa_results.find("div", class_ = "article_teaser_body").text
+    news_parag = nasa_results.find("div", class_ = "article_teaser_body").text
 
     # Display scrapped data paragraph text
     print("\n--------------------------\n")
-    print(f"Paragraph:\n\n{news_paragraph}")
+    print(f"Paragraph:\n\n{news_parag}")
     print("\n---------------------------\n")
 
 
@@ -330,10 +338,10 @@ def scrape():
      # Return all results as one dictionary
     mars_data_dict = {
         "news_title" : news_title,
-        "news_paragraph" : news_paragraph,
+        "news_paragraph" : news_parag,
         "featured_image_url" : featured_image_url,
-        "mars_fact_table": mars_fact_table,
-        "hemisphere_image_urls" : hemisphere_image_urls
+        "facts":mars_facts(),
+        "hemisphere_image" : hemisphere_image_urls
     }
 
     # In[343]:
