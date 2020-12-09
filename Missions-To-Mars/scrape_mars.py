@@ -246,7 +246,8 @@ def scrape():
 
 
     # Rename columns
-    df.columns = ["Description","Value"]
+    df.columns = ["Description","Mars"]
+    df.set_index('Description', inplace=True)
     df
 
 
@@ -254,9 +255,9 @@ def scrape():
 
 
     # Convert table to html
-    mars_fact_table = df.to_html()
+    mars_fact_table = df.to_html(classes="table table-striped" , justify="left" )
 
-    mars_fact_table.replace('\n', '')
+ #   mars_fact_table.replace('\n', '')
 
     #print(mars_fact_table)
 
@@ -264,8 +265,8 @@ def scrape():
     # In[174]:
 
 
-    df.to_html('mars_fact_table.html')
-    df.reset_index(drop=True)
+#    df.to_html('mars_fact_table.html')
+#    df.reset_index(drop=True)
 
 
     # # Mars Hemispheres
