@@ -265,6 +265,7 @@ def scrape():
 
 
     df.to_html('mars_fact_table.html')
+    df.reset_index(drop=True)
 
 
     # # Mars Hemispheres

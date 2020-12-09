@@ -6,73 +6,118 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Mission to Mars</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
+
+  <!-- Bring in our bootstrap stylesheet -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  
+
+
+</head> 
 
 <body>
 
-  <div class="container-fluid">
-    <div class="jumbotron text-center">
-      <h1>Mission To Mars</h1>
+<div class="container-fluid">
+      <div class="col-lg-12 col-md-8 col-sm-12">
+        <div class="jumbotron text-center" style="position: relative; top: 20px; right:90px; bottom:0px; left:90px; width:1200px; height:250px; border: 0.3rem; background-color:rgb(56, 53, 53)" >
+      <h1 style="color: white; font-family: 'Abril Fatface', cursive;"><b>Mission To Mars</b></h1>
+      <br>
       <p>
-        <a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a>
+        <a class="btn btn-primary btn-lg" href="/scrape" role="button" style="color: black; font-family: 'Abril Fatface', cursive;">Scrape New Data</a>
       </p>
+         </div>
     </div>
-  </div>
+</div>
+
 
 <!----------------------------->
 <!------ Mars News Data ------->
 <!----------------------------->
-  <div class="container">
-      <h2>Latest Mars News:</h2>
-      <h3><b>{{ mars_data_dict.news_title}}</b></h3>
-      <p>{{ mars_data_dict.news_paragraph}}</p>
-  </div>
+<div class="container-fluid">
+    <div class="row" id = "mars_news">
+          <div class="col-lg-12 col-md-8 col-sm-10" >
+            
+            <h1 style="position: relative; right:0px; bottom:0px; left: 95px; border:none;">Latest Mars News:</h1>
+            <br>
+            <h4 style="position: relative; right:0px; bottom:0px; left: 95px; border:none;"><b>{{ mars_data_dict.news_title}}</b></h4>
+            <p style="position: relative; right:0px; bottom:0px; left: 95px; border:none; font-size: 1rem;">{{ mars_data_dict.news_paragraph}}</p>
+          </div>
+      </div>
+</div>
+
 
 <!----------------------------->
 <!------ Featured Image -------> 
 <!-----------------------------> 
-  <div class="container"> 
-    <div class="row">
-      <h2>Featured Mars Image: </h2>
+<br>
+<br>
+<div class="container-fluid">
+  <div class="row" id="mars-facts">
+        <div class="col-lg-8 col-md-8 col-sm-12">
+        <h2 style="text-align:center;"><b>Featured Mars Image </b></h2>
+            <img style="position: relative; right:250px; bottom:0px; left: 95px; width:750px; height:650px; border: 0.3rem;"  
+                  src="{{ mars_data_dict.featured_image_url}}" alt="Mars Featured Image">
+    
 
-      <img src="{{ mars_data_dict.featured_image_url}}" alt="Mars Featured Image">
-  </div>
-  </div>
+        </div>
+
+
 
 <!----------------------------->
 <!----- Mars Facts TABLE ------>
 <!----------------------------->
-  <div class="row">
-    <div class="col-md-12">
-  <h3><b>Mars Facts</b></h3>
-  <!-- string interpolation-->
-  {{mars_data_dict.mars_fact_table|safe}}
-    </div>
+<div class="row" id="mars-facts">
+      <div class="col-lg-10 col-md-6 col-sm-10" style="position: relative; right:0px; bottom:0px; top: 6px; left:-130px; width:530px; height:0px; border:0;" >
+         <h3><b>Mars Facts</b></h3>
+ 
+          <!-- string interpolation-->
+          {{mars_data_dict.mars_fact_table|safe}}       
+      </div>
   </div>
+</div>
+
 
 <!----------------------------->
 <!----- Mars Hemispheres ------>
 <!----------------------------->
-<div class="description-header">
-  <h3><b>Mars Hemisphere: </b></h3>
-  <div class="row" id="Hemisphere-links">
-      <div class="col-md-6">
-          <div class="thumbnail">
-          {% for hemisphere_dict in mars_data_dict.hemisphere_image_urls %}
-          <img src="{{ hemisphere_dict.img_url}}" alt="Mars Image">
-          <h4 class="heading">{{hemisphere_dict.title}}</h4>
-          {% endfor %}
-      </div>
-    </div>
-  </div>
-</div>
 
+<div class="row">
+    
+    <div class="col-md-8 offset-4">
+      
+      <h2 style="padding-top: 20px; margin-top: 30px; right: 300px;">Mars Hemispheres</h2>  
+    <div class="card-deck">
+        <hr>
+        <div class="col-md-12">
+            <div class="row" >   
+                {% for hemisphere_dict in mars_data_dict.hemisphere_image_urls %}
+                <div class="col-md-6">
+                    <div class="card text-white bg-info" style="margin: 30px; right: 300px;">
+
+                <div> 
+                  <div class "card">
+                      <div class="card-body">
+                  <img class="card-img-top" src="{{ hemisphere_dict.img_url| safe}}" alt="Mars Image">
+                      </div>
+                </div>
+
+                    <h4 class="heading" style = "text-align: center; font-size: 22px;">{{hemisphere_dict.title | safe }}</h4>
+                  </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</div>
     <!-- Bootstrap JavaScript -->
-    <!-- jQuery, Popper.js & Bootstrap JS -->
+    <!-- jQuery, Popper.js,Google Fonts & Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
 
-</body>
+
+  </body>
 </html>
+
