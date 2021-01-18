@@ -2,7 +2,7 @@
 
 ![](Images/mission_to_mars.png)
 
-Building a web application that scrapes various websites for data related to the Mission to Mars and displays the information in a single HTML page. 
+Built a web application that scrapes various websites for data related to the Mission to Mars and displays the information in a single HTML page. 
 
 ### Step 1 - Scraping
 
